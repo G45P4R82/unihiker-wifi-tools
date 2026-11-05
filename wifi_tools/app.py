@@ -101,7 +101,10 @@ class WiFiToolsApp:
             self.portal = TrainingPortal(port=8081, data_dir=os.path.join(os.getcwd(), "portal-data"))
             self.portal.start()
             self.portal_ap_active = True
-            self.status.config(text="AP + portal ativos\nhttp://10.42.0.1:8081")
+            message = "AP + portal ativos\nhttp://10.42.0.1:8081"
+            if self.portal.redirect_error:
+                message += "\nRedirecionamento automático indisponível"
+            self.status.config(text=message)
         except Exception:
             if self.portal:
                 self.portal.stop()

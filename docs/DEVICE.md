@@ -19,6 +19,7 @@ O dispositivo já executa serviços de interface, telemetria, SSH, Jupyter, Samb
 - Rádio interno somente 2,4 GHz.
 - O utilitário `iw` não está instalado no baseline observado.
 - Suporte a modo monitor/injeção ainda não foi confirmado.
+- O kernel atual não consegue inicializar a tabela NAT do `iptables`; captive redirect transparente exige kernel/módulo compatível.
 - Memória disponível é limitada; processos de scan devem ser curtos e canceláveis.
 
 ## Regra de implantação

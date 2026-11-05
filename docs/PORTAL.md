@@ -36,4 +36,4 @@ Ao parar o portal, o sistema deve encerrar o servidor, desfazer o AP, restaurar 
 
 ## Estado do MVP
 
-O MVP já cria o AP via NetworkManager, inicia o servidor Flask e restaura a conexão anterior ao ser encerrado. O servidor escuta na porta `8081`; durante a validação, o operador acessa `http://10.42.0.1:8081`. O redirecionamento automático de DNS/captive portal ainda será adicionado depois da instalação e validação do componente DNS no dispositivo.
+O MVP já cria o AP via NetworkManager, inicia o servidor Flask e restaura a conexão anterior ao ser encerrado. O servidor escuta na porta `8081`; durante a validação, o operador acessa `http://10.42.0.1:8081`. O kernel atual não inicializa a tabela NAT do `iptables`, portanto o redirecionamento transparente automático não é suportado pelo firmware atual. A interface informa essa condição e mantém o portal disponível por URL direta.
