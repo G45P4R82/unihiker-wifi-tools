@@ -1,0 +1,24 @@
+# Device-specific credentials and deployment notes
+target.md
+*.secret
+*.secrets
+.env
+.env.*
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Runtime data
+logs/
+captures/
+portal-data/
+*.pcap
+*.pcapng
+
+# Editor and OS files
+.DS_Store
+.idea/
+.vscode/
