@@ -7,12 +7,14 @@
 - Registrar versões do Debian, NetworkManager, Python e driver Wi-Fi.
 - Garantir que `target.md` e qualquer segredo estejam fora do repositório.
 
-## Fase 1: aplicativo isolado
+## Fase 1: aplicativo isolado (em andamento)
 
 - Criar um processo Python próprio para o WiFi Tools.
 - Usar a tela Xorg existente sem alterar o aplicativo SAM.
 - Implementar navegação touch, mensagens de erro e cancelamento.
 - Executar comandos do sistema com lista fixa de argumentos e timeouts.
+
+Estado atual: menu Python e portal Flask instalados em `/opt/unihiker/wifi-tools`; teste da interface aprovado no display Xorg.
 
 ## Fase 2: recursos de rede básicos
 

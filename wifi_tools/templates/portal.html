@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ campaign }}</title>
+<style>
+body { font-family: sans-serif; max-width: 30rem; margin: 3rem auto; padding: 0 1rem; color: #17202a; }
+main { border: 1px solid #ccd6dd; border-radius: 12px; padding: 1.5rem; }
+input, button { box-sizing: border-box; width: 100%; padding: .8rem; margin-top: .7rem; font-size: 1rem; }
+button { background: #1769aa; color: white; border: 0; border-radius: 6px; }
+.notice { background: #fff4ce; padding: .8rem; border-radius: 6px; }
+</style>
+<main>
+<h1>{{ campaign }}</h1>
+<p class="notice"><strong>Treinamento autorizado.</strong> Esta é uma campanha de conscientização. Nunca informe senhas reais.</p>
+<p>Use o código fornecido pelo instrutor para registrar sua participação.</p>
+<form method="post" action="/training">
+  <input type="hidden" name="campaign" value="{{ campaign }}">
+  <label for="training_code">Código de treinamento</label>
+  <input id="training_code" name="training_code" autocomplete="off" required>
+  <button type="submit">Continuar</button>
+</form>
+</main>

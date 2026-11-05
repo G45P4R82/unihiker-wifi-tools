@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=WiFi Tools
+Comment=Authorized Wi-Fi diagnostics and training portal
+Exec=/usr/bin/python3 /opt/unihiker/wifi-tools/run_wifi_tools.py
+Icon=network-wireless
+Terminal=false
+Categories=Network;Utility;
