@@ -33,3 +33,7 @@ O portal serve para exercícios de conscientização, validação de captive por
 ## Encerramento
 
 Ao parar o portal, o sistema deve encerrar o servidor, desfazer o AP, restaurar a conexão anterior quando possível e informar o resultado ao operador.
+
+## Estado do MVP
+
+O MVP já cria o AP via NetworkManager, inicia o servidor Flask e restaura a conexão anterior ao ser encerrado. O servidor escuta na porta `8081`; durante a validação, o operador acessa `http://10.42.0.1:8081`. O redirecionamento automático de DNS/captive portal ainda será adicionado depois da instalação e validação do componente DNS no dispositivo.

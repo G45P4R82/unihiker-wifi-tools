@@ -82,11 +82,11 @@ O dispositivo-alvo está descrito apenas localmente em `target.md`, que é ignor
 
 Para executar o teste do portal, instale as dependências de `requirements.txt` e rode `python3 -m unittest discover -s tests -v`. A interface pode ser iniciada com `python3 run_wifi_tools.py` em uma sessão gráfica.
 
-O primeiro marco é implementar e testar o menu de status/scan sem interromper o Wi-Fi ou o SAM. O portal cativo será desenvolvido depois, em uma rede de laboratório isolada.
+O primeiro marco é implementar e testar o menu de status/scan sem interromper o Wi-Fi ou o SAM. O portal deve ser validado somente em uma rede de laboratório isolada.
 
 ## Status
 
-MVP implementado e validado no Unihiker: menu touch, status, scan, conexão, criação de AP e portal de treinamento autorizado. A integração de DNS para redirecionamento captive ainda está pendente.
+MVP implementado e validado no Unihiker: menu touch, status, scan, conexão, criação de AP e portal HTTP de treinamento autorizado. O fluxo AP + servidor está integrado; a integração de DNS para redirecionamento captive automático ainda está pendente.
 
 ## Licença
 

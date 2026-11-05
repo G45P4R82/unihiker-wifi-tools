@@ -15,6 +15,8 @@ class WiFiToolsApp:
         self.root.geometry("320x240")
         self.root.configure(bg="#101820")
         self.portal = None
+        self.previous_connection = None
+        self.portal_ap_active = False
         self._build()
 
     def _build(self):
@@ -89,14 +91,41 @@ class WiFiToolsApp:
             return
         if not messagebox.askyesno("Portal autorizado", "Iniciar portal de treinamento em laboratório?", parent=self.root):
             return
-        self.portal = TrainingPortal(port=8081, data_dir=os.path.join(os.getcwd(), "portal-data"))
-        self.portal.start()
-        self.status.config(text="Portal ativo: porta 8081\nUse apenas em campanha autorizada")
+        ssid = simpledialog.askstring("Portal autorizado", "SSID da campanha:", initialvalue="WiFiTools-Training", parent=self.root)
+        password = simpledialog.askstring("Portal autorizado", "Senha do AP (mínimo 8 caracteres):", show="*", parent=self.root)
+        if not ssid or not password:
+            return
+        try:
+            self.previous_connection = network.status().get("GENERAL.CONNECTION")
+            network.hotspot_start(ssid, password)
+            self.portal = TrainingPortal(port=8081, data_dir=os.path.join(os.getcwd(), "portal-data"))
+            self.portal.start()
+            self.portal_ap_active = True
+            self.status.config(text="AP + portal ativos\nhttp://10.42.0.1:8081")
+        except Exception:
+            if self.portal:
+                self.portal.stop()
+                self.portal = None
+            if self.portal_ap_active:
+                network.hotspot_stop()
+                self.portal_ap_active = False
+            raise
 
     def stop_portal(self):
         if self.portal:
             self.portal.stop()
             self.portal = None
+            if self.portal_ap_active:
+                try:
+                    network.hotspot_stop()
+                finally:
+                    self.portal_ap_active = False
+            if self.previous_connection and self.previous_connection != "WiFiTools-AP":
+                try:
+                    network.run(["nmcli", "connection", "up", "id", self.previous_connection], timeout=30)
+                except Exception:
+                    pass
+            self.previous_connection = None
             self.status.config(text="Portal parado")
         else:
             self.status.config(text="Nenhum portal ativo")
